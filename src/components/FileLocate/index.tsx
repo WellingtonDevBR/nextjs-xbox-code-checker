@@ -84,7 +84,7 @@ export default function FileLocate() {
                             onChange={handleInputChange}
                         />
                         <label htmlFor="contained-button-file">
-                            <Button startIcon={<CloudUploadIcon />} variant="contained" color="primary" component="span" size="large">
+                            <Button startIcon={<CloudUploadIcon />} variant="contained" color="secondary" component="span" size="large">
                                 Upload
                             </Button>
                         </label>
