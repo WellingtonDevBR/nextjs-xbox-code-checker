@@ -12,11 +12,6 @@ interface XboxKey {
 
 export async function getXboxValidator(code: string) {
 
-    var corsOptions = {
-        origin: 'http://google.com',
-        optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-      }
-
     let auth = await axios.get('https://redeem.microsoft.com/webblendredeem?lang=en-US&market=US&control=redeem&mock=false&metadata=mscomct&lang=en-US&cid=a78287f79f56ddc1&xhr=true&X-Requested-With=XMLHttpRequest&_=1617204220580', {
         
         headers: {
@@ -25,7 +20,7 @@ export async function getXboxValidator(code: string) {
     }).then((resp) => {
         console.log('test1', resp)
         return resp.data;
-    })
+    }).catch(err => console.log(err));
 
     console.log('auth', auth);
 
