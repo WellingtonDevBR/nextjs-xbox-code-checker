@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
-import Link from "next/link";
-import { useRouter } from "next/router";
+// import Link from "next/link";
+// import { useRouter } from "next/router";
 import clsx from 'clsx';
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export function Header() {
 
-    const router = useRouter();
+    // const router = useRouter();
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
