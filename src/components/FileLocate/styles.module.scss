@@ -4,7 +4,7 @@
 }
 
 .ContainerContent {
-    max-width: 1800px;
+    max-width: 1120px;
     height: 8rem;
     margin: 0;
     margin-top: 50px;
@@ -13,28 +13,36 @@
 }
 
 .DivContent {
-    height: 35px;
-    max-width: 1920px;
-    background-color: #5b5b5b;
     margin-top: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    border-radius: 20px;
     
-    label {
+    label, button {
         background: var(gray-300);
-        margin-left: 10px;
         display: flex;
         align-items: center;
+        margin-left: 20px;
     }
 
-    input {
-        overflow: hidden;
-        width: 125px;
+    // input {
+    //     overflow: hidden;
+    //     width: 140px;
+    // }
+
+    input[type="file"] {
+        display: none;
     }
 
     button {
         width: 125px;
         height: 25px;
     }
+}
+
+.fileupload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }

@@ -3,9 +3,11 @@ import styles from './styles.module.scss'
 import readXlsxFile from 'read-excel-file'
 import { StatusBox } from '../StatusBox';
 import { getXboxValidator } from '../../services/xboxApi';
-import { Button } from 'react-bootstrap';
+import Button from '@material-ui/core/Button';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import SaveIcon from '@material-ui/icons/Save';
 
 interface XboxKey {
     id: number,
@@ -13,9 +15,10 @@ interface XboxKey {
     description: string,
 }
 
+
 export default function FileLocate() {
 
-    const [inputFile, setInputFile] = useState('ESCOLHA UM ARQUIVO');
+    const [inputFile, setInputFile] = useState();
 
     const [tokens, setTokens] = useState<XboxKey[]>([]);
     const [tokenAmount, setTokenAmount] = useState(0);
@@ -27,6 +30,8 @@ export default function FileLocate() {
     let counter = 0;
 
     async function handleInputChange(input: readXlsxFile) {
+
+        console.log(input)
 
         setInputFile(input.target.files[0].name)
 
@@ -70,18 +75,30 @@ export default function FileLocate() {
             <div className={styles.ContainerFile}>
                 <div className={styles.ContainerContent}>
                     <div className={styles.DivContent}>
-                        <label>{inputFile}</label>
-                        <input id="input" onChange={handleInputChange} type="file" />
-                    </div>
-                    <div className={styles.DivContent}>
-                        <label>SALVE SEU ARQUIVO</label>
-                        <Button variant="warning" onClick={(e) => exportToCSV(tokens, inputFile + '_checkFile')}>Save File</Button>
+                        <input
+                            accept="*"
+                            className={styles.input}
+                            id="contained-button-file"
+                            multiple
+                            type="file"
+                            onChange={handleInputChange}
+                        />
+                        <label htmlFor="contained-button-file">
+                            <Button startIcon={<CloudUploadIcon />} variant="contained" color="primary" component="span" size="large">
+                                Upload
+                            </Button>
+                        </label>
+                        <label htmlFor="contained-button-file">
+                            <Button startIcon={<SaveIcon />} variant="contained" color="primary" component="span" size="large" onClick={(e) => exportToCSV(tokens, inputFile + '_checkFile')}>
+                                Save File
+                        </Button>
+                        </label>
                     </div>
                     <StatusBox tokens={tokens} tokenAmount={tokenAmount} keys={keys} validKeys={validKeys} redeemedKeys={redeemedKeys} invalidKeys={invalidKeys} />
                 </div>
             </div>
             <div className={styles.DivButton}>
-                
+
             </div>
 
         </>
