@@ -1,0 +1,36 @@
+.headerContainer {
+    background-color: #FF0000;
+    height: 3rem;
+    border-bottom: 1px solid var(--purple-700);
+}
+
+.headerContent {
+    max-width: 1120px;
+    height: 3rem;
+    margin: 0;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    ul {
+        margin-left: 2rem;
+        height: 3rem;
+
+        li {
+        
+            display: inline-block;
+            position: relative;
+            padding: 0 0.5rem;
+            line-height: 3rem;
+            font-weight: bold;
+            
+            link {
+                color: black;
+
+            }
+        }
+    }
+
+    
+
+    
+}

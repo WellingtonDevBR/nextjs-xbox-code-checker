@@ -5,11 +5,28 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 8000",
+    "gcp-build": "npm run build",
+    "deploy": "gcloud config set project react-code-checker && gcloud app deploy app.yaml --version=0-1-0"
   },
   "dependencies": {
+    "@babel/runtime": "7.0.0-beta.55",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "file-saver": "^2.0.5",
     "next": "10.1.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-bootstrap": "^1.5.2",
+    "react-dom": "17.0.2",
+    "read-excel-file": "^5.0.0",
+    "sass": "^1.32.8",
+    "xlsx": "^0.16.9"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.37",
+    "@types/react": "^17.0.3",
+    "typescript": "^4.2.3"
   }
 }
