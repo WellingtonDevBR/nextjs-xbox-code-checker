@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
             },
         },
         toolbar: {
-            
+
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-end',
@@ -108,7 +108,6 @@ export function Header() {
 
     return (
         <div className={[classes.root && styles.headerContainer].join(' ')}>
-            {/* <CssBaseline /> */}
             <AppBar
                 position="fixed"
                 className={clsx(classes.appBar, {
@@ -149,9 +148,9 @@ export function Header() {
                 </div>
                 <Divider />
                 <List>
-                    {['XBOX', 'PLAYSTATION', 'ORIGIN'].map((text, index) => (
+                    {['Xbox', 'Playstation'].map((text, index) => (
                         <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <SportsEsportsRoundedIcon /> : <SportsEsportsRoundedIcon />}</ListItemIcon>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
@@ -164,3 +163,4 @@ export function Header() {
         </div>
     )
 }
+

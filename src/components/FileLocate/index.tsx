@@ -31,8 +31,6 @@ export default function FileLocate() {
 
     async function handleInputChange(input: readXlsxFile) {
 
-        console.log(input)
-
         setInputFile(input.target.files[0].name)
 
         await readXlsxFile(input.target.files[0]).then((rows: readXlsxFile) => {
@@ -88,10 +86,10 @@ export default function FileLocate() {
                                 Upload
                             </Button>
                         </label>
-                        <label htmlFor="contained-button-file">
-                            <Button startIcon={<SaveIcon />} variant="contained" color="primary" component="span" size="large" onClick={(e) => exportToCSV(tokens, inputFile + '_checkFile')}>
+                        <label >
+                            <Button disabled={keys.length > 0 ? false : true} startIcon={<SaveIcon />} variant="contained" color="primary" component="span" size="large" onClick={(e) => exportToCSV(tokens, inputFile + '_checkFile')}>
                                 Save File
-                        </Button>
+                                </Button>
                         </label>
                     </div>
                     <StatusBox tokens={tokens} tokenAmount={tokenAmount} keys={keys} validKeys={validKeys} redeemedKeys={redeemedKeys} invalidKeys={invalidKeys} />
