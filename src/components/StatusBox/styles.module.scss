@@ -3,16 +3,16 @@
 }
 
 .Container {
-    min-width: 1020px;
+    min-width: 100%;
     background: #2c243e;
-    min-height: 1020px;
+    max-height: 1020px;
     border-radius: 30px;
 }
 
 .ContainerStatus {
     margin-left: 3%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr;
 
     div {
         max-width: 300px;

@@ -10,9 +10,16 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import SaveIcon from '@material-ui/icons/Save';
 
 interface XboxKey {
-    id: number,
-    tokenState: string,
-    description: string,
+    id: number;
+    token: string;
+    tokenState: string;
+}
+
+
+class XboxToken {
+    id: number;
+    token: string;
+    tokenState: string;
 }
 
 
@@ -24,10 +31,9 @@ export default function FileLocate() {
     const [tokenAmount, setTokenAmount] = useState(0);
     const [keys, setKeys] = useState([]);
     const [redeemedKeys, setRedeemedKeys] = useState([]);
+    const [doubleKeys, setDoubleKeys] = useState();
     const [validKeys, setValidKeys] = useState([]);
     const [invalidKeys, setInvalidKeys] = useState([]);
-
-    let counter = 0;
 
     async function handleInputChange(input: readXlsxFile) {
 
@@ -36,9 +42,11 @@ export default function FileLocate() {
         await readXlsxFile(input.target.files[0]).then((rows: readXlsxFile) => {
             setTokenAmount(rows.length);
             setKeys(rows);
-            rows.map((row: string) => {
+            rows.map((row: string, index) => {
+
                 const response = getXboxValidator(row);
-                response.then((res: XboxKey) => {
+
+                response.then((res) => {
                     if (res.tokenState == 'Active') {
                         setValidKeys(validKeys => [...validKeys, res.tokenState])
                     } else if (res.tokenState == 'Redeemed') {
@@ -46,7 +54,22 @@ export default function FileLocate() {
                     } else {
                         setInvalidKeys(invalidKeys => [...invalidKeys, res.tokenState])
                     }
-                    setTokens(tokens => [...tokens, res])
+
+                    let key = new XboxToken();
+                    key.id = index;
+                    key.token = row[0];
+                    key.tokenState = res.tokenState;
+
+                    keys.map((key) => {
+                        console.log('1', key)
+                        if (key.token == row[0]) {
+                            console.log('consegui')
+                        }
+                        console.log('1', key)
+                    })
+
+                    setTokens(tokens => [...tokens, key]);
+
                 })
             })
         })
@@ -61,6 +84,13 @@ export default function FileLocate() {
         const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
         const data = new Blob([excelBuffer], { type: fileType });
         FileSaver.saveAs(data, fileName + fileExtension);
+
+        setTokens([]);
+        setTokenAmount(0);
+        setKeys([]);
+        setRedeemedKeys([]);
+        setValidKeys([]);
+        setInvalidKeys([]);
     }
 
     useEffect(() => {
@@ -87,7 +117,15 @@ export default function FileLocate() {
                             </Button>
                         </label>
                         <label >
-                            <Button disabled={keys.length > 0 ? false : true} startIcon={<SaveIcon />} variant="contained" color="primary" component="span" size="large" onClick={(e) => exportToCSV(tokens, inputFile + '_checkFile')}>
+                            <Button
+                                disabled={keys.length > 0 ? false : true}
+                                startIcon={<SaveIcon />}
+                                variant="contained"
+                                color="primary"
+                                component="span"
+                                size="large"
+                                onClick={(e) => exportToCSV(tokens, inputFile + '_checkFile')}
+                            >
                                 Save File
                                 </Button>
                         </label>

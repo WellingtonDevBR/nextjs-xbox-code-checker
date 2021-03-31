@@ -107,7 +107,7 @@ export function Header() {
     };
 
     return (
-        <div className={[classes.root && styles.headerContainer].join(' ')}>
+        <div className={classes.root}>
             <AppBar
                 position="fixed"
                 className={clsx(classes.appBar, {
@@ -115,48 +115,9 @@ export function Header() {
                 })}
             >
                 <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, {
-                            [classes.hide]: open,
-                        })}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+                    
                 </Toolbar>
             </AppBar>
-            <Drawer
-                variant="permanent"
-                className={clsx(classes.drawer, {
-                    [classes.drawerOpen]: open,
-                    [classes.drawerClose]: !open,
-                })}
-                classes={{
-                    paper: clsx({
-                        [classes.drawerOpen]: open,
-                        [classes.drawerClose]: !open,
-                    }),
-                }}
-            >
-                <div className={classes.toolbar}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                    </IconButton>
-                </div>
-                <Divider />
-                <List>
-                    {['Xbox', 'Playstation'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider />
-            </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
             </main>
