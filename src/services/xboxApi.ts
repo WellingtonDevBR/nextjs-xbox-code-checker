@@ -13,7 +13,7 @@ export async function getXboxValidator(code: string) {
 
     if (!cookie) {
         cookie = await api.post('/xbox').then((response) => {
-            return response.data;
+            return response.data.Authorization;
         })
     }
 
