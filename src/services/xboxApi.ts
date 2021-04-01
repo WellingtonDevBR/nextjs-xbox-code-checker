@@ -1,5 +1,4 @@
 import axios from "axios";
-import { GetStaticProps } from "next";
 import { useState } from "react";
 import { api } from "./api";
 
