@@ -13,8 +13,9 @@ export default async function handler(req, res) {
     })
 
     if (req.method === 'POST') {
-        res.status(200).json(response)
+        res.status(200).json({'Authorization': response})
     } else {
-        res.status(500).json({ 'status': '0', 'msg': 'something went wrong' })
+        response.setHeader('Allow', 'POST');
+        response.status(405).end('Method not allowed')
     }
 }

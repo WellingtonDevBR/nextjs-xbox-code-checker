@@ -24,7 +24,5 @@ export async function getXboxValidator(code: string) {
     }).then((response) => {
         return response.data;
     })
-
-
     return keys;
 }
