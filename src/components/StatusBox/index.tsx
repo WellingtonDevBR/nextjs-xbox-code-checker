@@ -10,9 +10,7 @@ interface XboxKey {
 }
 
 
-export function StatusBox({ tokens, tokenAmount, keys, validKeys, invalidKeys, redeemedKeys}) {
-
-
+export function StatusBox({ tokens, tokenAmount, keys, validKeys, invalidKeys, redeemedKeys }) {
     return (
         <>
             <h1 style={{ marginTop: '3%' }}>Status</h1>
@@ -46,6 +44,12 @@ export function StatusBox({ tokens, tokenAmount, keys, validKeys, invalidKeys, r
                     </div>
                 </div>
                 <div className={styles.ContainerCode}>
+                    <div>
+                        <th>ID</th>
+                        <th>CODE</th>
+                        <th>STATUS</th>
+                        <th>DUPLICATE</th>
+                    </div>
                     {
                         tokens.map((token: XboxKey, index) => (
                             <div id={index} className={styles.singleCodeContainer}>

@@ -5,7 +5,7 @@
 .Container {
     min-width: 100%;
     background: #2c243e;
-    max-height: 1020px;
+    max-height: 460px;
     border-radius: 30px;
 }
 
@@ -40,18 +40,26 @@
     margin-left: 20px;
     background: #2c243e;
     min-width: 800px;
-    max-height: 1020px;
+    max-height: 460px;
 
     overflow-y: scroll;
     overflow-x: hidden;
     border-radius: 20px;
     -ms-overflow-style: none;
     scrollbar-width: none;
+
+    div {
+        display: flex;
+        justify-content: space-between;
+        th {
+            margin: 0 30px;
+        }
+    }
 }
 
-.ContainerCode::-webkit-scrollbar {
+/*.ContainerCode::-webkit-scrollbar {
     display: none;
-}
+}*/
 
 .singleCodeContainer {
     padding: 30px;
