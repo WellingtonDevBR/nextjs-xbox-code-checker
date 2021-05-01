@@ -42,6 +42,7 @@ export default function FileLocate() {
         await readXlsxFile(input.target.files[0]).then((rows: readXlsxFile) => {
             setTokenAmount(rows.length);
             setKeys(rows);
+
             rows.map((row: string, index) => {
 
                 const response = getXboxValidator(row);
@@ -61,11 +62,9 @@ export default function FileLocate() {
                     key.tokenState = res.tokenState;
 
                     keys.map((key) => {
-                        console.log('1', key)
                         if (key.token == row[0]) {
                             console.log('consegui')
                         }
-                        console.log('1', key)
                     })
 
                     setTokens(tokens => [...tokens, key]);

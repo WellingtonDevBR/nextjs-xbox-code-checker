@@ -53,10 +53,18 @@ export function StatusBox({ tokens, tokenAmount, keys, validKeys, invalidKeys, r
                     {
                         tokens.map((token: XboxKey, index) => (
                             <div id={index} className={styles.singleCodeContainer}>
-                                <p className={token.tokenState == 'Active' ? styles.CheckMark : styles.UncheckMark}>1</p>
+                                <p className={token.tokenState == 'Active' ? styles.CheckMark : styles.UncheckMark}>{index}</p>
                                 <p>{keys[index]}</p>
                                 <p className={token.tokenState == 'Active' ? styles.valid : styles.invalid}>{token.tokenState}</p>
-                                <p>NOT DUPLICATED</p>
+                                <p>{keys.forEach((item) => {
+                                    const counter = 0;
+                                    
+                                    for(let i =0; 0 < keys.length; i++) {
+                                        console.log(i)
+                                    }
+
+
+                                })}</p>
                             </div>
                         ))
                     }
