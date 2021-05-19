@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         return response.data.metadata.mscomct;
     })
 
-    if (req.method === 'POST') {
+    if (req.method === 'GET') {
         res.status(200).json({'Authorization': response})
     } else {
         response.setHeader('Allow', 'GET');
