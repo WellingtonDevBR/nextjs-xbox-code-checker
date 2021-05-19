@@ -2,6 +2,7 @@
   "name": "xbox_validator",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://localhost:3000/api",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
