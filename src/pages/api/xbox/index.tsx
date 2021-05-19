@@ -1,9 +1,28 @@
 import axios from "axios";
+import Cors from 'cors'
 import { GetServerSideProps } from "next";
 import { api } from "../../../services/api";
 
 
+const cors = Cors({
+    methods: ['GET', 'HEAD', 'POST'],
+  })
+
+  function runMiddleware(req, res, fn) {
+    return new Promise((resolve, reject) => {
+      fn(req, res, (result) => {
+        if (result instanceof Error) {
+          return reject(result)
+        }
+  
+        return resolve(result)
+      })
+    })
+  }
+
 export default async function handler(req, res) {
+
+    await runMiddleware(req, res, cors);
 
     const response = await axios.get('https://redeem.microsoft.com/webblendredeem?lang=pt-BR&market=US&control=redeem&mock=false&metadata=mscomct&lang=pt-BR&cid=a78287f79f56ddc1&xhr=true&X-Requested-With=XMLHttpRequest&_=1619829755302', {
         headers: {
