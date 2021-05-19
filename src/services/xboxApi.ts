@@ -10,7 +10,7 @@ interface XboxKey {
 
 export async function getXboxValidator(code: string) {
 
-    const token = await api.post('/xbox')
+    const token = await api.get('/xbox')
     .then((response) => {
         return response.data.Authorization
     }).catch(err => {
