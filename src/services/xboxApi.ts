@@ -12,6 +12,7 @@ export async function getXboxValidator(code: string) {
 
     const token = await api.get('/xbox')
     .then((response) => {
+        console.log('sads')
         return response.data.Authorization
     }).catch(err => {
         return err;
