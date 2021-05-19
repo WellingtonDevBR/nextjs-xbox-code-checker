@@ -6,19 +6,19 @@ import { api } from "../../../services/api";
 
 const cors = Cors({
     methods: ['GET', 'HEAD', 'POST'],
-  })
+})
 
-  function runMiddleware(req, res, fn) {
+function runMiddleware(req, res, fn) {
     return new Promise((resolve, reject) => {
-      fn(req, res, (result) => {
-        if (result instanceof Error) {
-          return reject(result)
-        }
-  
-        return resolve(result)
-      })
+        fn(req, res, (result) => {
+            if (result instanceof Error) {
+                return reject(result)
+            }
+
+            return resolve(result)
+        })
     })
-  }
+}
 
 export default async function handler(req, res) {
 
@@ -32,10 +32,10 @@ export default async function handler(req, res) {
         return response.data.metadata.mscomct;
     })
 
-    if (req.method === 'GET' || req.method === 'POST' || req.method === 'HEAD') {
-        res.status(200).json({'Authorization': 'GABQAgMAAAAMgAAADQAgDrlcKQpQhCK99sG+fOW7YZ72VcL5Gf8wUhQEuZQRX+UAAVYM6SJhIrDJWwA1oIbJLsjpJn9rdzvXhABnHvoKDZ1BVTtGqCkKfv5r2WEsNUfxygECFSP/BmZUYFR1hUF7+/fmM2E1L4Z2fhs9K7N+Nl3EzJO1nr6iMgvnLy+PBvgE7oUzH8lviXOHu3TvEq/TQgBKOe+GaBVhkHSQwr2zfqv+xcl9DwxbGTc683a9ekiX7U5kVgaYG+op69l8JbBGkC8GDLff54cuzeBIZeA4mqDGbJulFfUMr956QXBQHmXA/lDdOedmkUUwrWpwZ0ML2M0ATr7xghX17TXx8FkJ+EMRBuZfVfzlehF8JtEW28mQh48iI8OpJVcyusrNKZEiNasdAXsAHQEAAAYAa0givlY8pWCiGZ9gXyIBAAoQIAAQHAB3ZWxsaW5ndG9uLjAwNzFAaG90bWFpbC5jb20AXgAAG3dlbGxpbmd0b24uMDA3MUBob3RtYWlsLmNvbQAABxJVUwAFOTMxMDEAABXfBBYCAACFkm1AEARDAAp3ZWxsaW5ndG9uAAZzYW50b3MAAAAAAAAAAAAAAAAAAAAAAACfVt3Bp4KH9wAAVjylYNaNpmAAAAAAAAAAAAAAAAANADE4Ny4yNi43My4yMAAFAwAAAANAGADWVtbzBBAFAAAAAAAAAAAAAAAAAAAA6tcaucqtoZ7/vxgAH4ZUFf+/GAAehlQVAAAAAAAAAAAAAAAAAAD/PyMAQChQgAgAAAADAA=='})
-    } else {
-        response.setHeader('Allow', ['GET', 'POST', 'HEAD']);
-        response.status(405).end('Method not allowed')
-    }
+    // if (req.method === 'GET' || req.method === 'POST' || req.method === 'HEAD') {
+    res.status(200).json({'GABQAgMAAAAMgAAADQAgDrlcKQpQhCK99sG+fOW7YZ72VcL5Gf8wUhQEuZQRX+UAAVYM6SJhIrDJWwA1oIbJLsjpJn9rdzvXhABnHvoKDZ1BVTtGqCkKfv5r2WEsNUfxygECFSP/BmZUYFR1hUF7+/fmM2E1L4Z2fhs9K7N+Nl3EzJO1nr6iMgvnLy+PBvgE7oUzH8lviXOHu3TvEq/TQgBKOe+GaBVhkHSQwr2zfqv+xcl9DwxbGTc683a9ekiX7U5kVgaYG+op69l8JbBGkC8GDLff54cuzeBIZeA4mqDGbJulFfUMr956QXBQHmXA/lDdOedmkUUwrWpwZ0ML2M0ATr7xghX17TXx8FkJ+EMRBuZfVfzlehF8JtEW28mQh48iI8OpJVcyusrNKZEiNasdAXsAHQEAAAYAa0givlY8pWCiGZ9gXyIBAAoQIAAQHAB3ZWxsaW5ndG9uLjAwNzFAaG90bWFpbC5jb20AXgAAG3dlbGxpbmd0b24uMDA3MUBob3RtYWlsLmNvbQAABxJVUwAFOTMxMDEAABXfBBYCAACFkm1AEARDAAp3ZWxsaW5ndG9uAAZzYW50b3MAAAAAAAAAAAAAAAAAAAAAAACfVt3Bp4KH9wAAVjylYNaNpmAAAAAAAAAAAAAAAAANADE4Ny4yNi43My4yMAAFAwAAAANAGADWVtbzBBAFAAAAAAAAAAAAAAAAAAAA6tcaucqtoZ7/vxgAH4ZUFf+/GAAehlQVAAAAAAAAAAAAAAAAAAD/PyMAQChQgAgAAAADAA==' })
+    // } else {
+    //     response.setHeader('Allow', ['GET', 'POST', 'HEAD']);
+    //     response.status(405).end('Method not allowed')
+    // }
 }
