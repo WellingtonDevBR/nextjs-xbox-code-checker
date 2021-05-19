@@ -5,7 +5,7 @@ import { api } from "../../../services/api";
 
 export default async function handler(req, res) {
 
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header({"Access-Control-Allow-Origin": "*", 'allowed_origins': '*',}); // update to match the domain you will make the request from
 
     const response = await axios.get('https://redeem.microsoft.com/webblendredeem?lang=pt-BR&market=US&control=redeem&mock=false&metadata=mscomct&lang=pt-BR&cid=a78287f79f56ddc1&xhr=true&X-Requested-With=XMLHttpRequest&_=1619829755302', {
         headers: {
