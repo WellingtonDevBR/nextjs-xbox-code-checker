@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import FileLocate from '../FileLocate';
 import styles from './styles.module.scss';
 
 
