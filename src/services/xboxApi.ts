@@ -20,7 +20,7 @@ export async function getXboxValidator(code: string) {
 
     let keys = await axios.get<XboxKey>(`https://purchase.mp.microsoft.com/v7.0/tokenDescriptions/${code}?market=US&language=en-US&supportMultiAvailabilities=true`, {
         headers: {
-            Authorization: `WLID1.0=${token}`
+            Authorization: `${token}`
         }
     }).then((response) => {
         return response.data;
