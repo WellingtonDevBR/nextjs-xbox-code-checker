@@ -40,9 +40,9 @@ export default async function handler(req, res) {
 //   }
 
   const response = await axios
-    .get("http://34.227.32.18:8000/")
+    .get("http://3.86.189.253:8000/")
     .then((response) => {
-      return response.data.auth_token;
+      return response.data.auth_token
     });
 
 //   global.localStorage.setItem("auth_token", response);
